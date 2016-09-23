@@ -1,0 +1,95 @@
+<div class="col-xs-12 app-wrapper noPadding">
+    <div class="page-header col-xs-12 noPadding">
+        <img src="lib/images/logo.jpg" alt="" class="img-responsive center-block" width="100">
+    </div>
+    <ion-content>
+        <div class="page-body col-xs-12 noPadding">
+
+            <div class="col-xs-12 noPadding" *ngIf="activePage == 1" >
+                <div id="map"></div>
+            </div>
+
+            <div class="col-xs-12 noPadding" *ngIf="activePage == 2" >
+                <div class="page-result col-xs-12" (click)="resultPage()">
+                    <div class="page-result-item col-xs-12">
+                        <div class="col-xs-5 noPadding">
+                            <img src="lib/images/mega645.png" alt="" class="img-responsive">
+                        </div>
+                        <div class="col-xs-7 page-result-content">
+                            <p class="page-result-title">Mega 6/45</p>
+                            <p class="page-result-excerpt">Xổ số điện toán tự chọn</p>
+                            <money>21,222,000,000 đ</money>
+                        </div>
+                    </div>
+                </div>
+                <div class="page-result col-xs-12" (click)="commingSoon()">
+                    <div class="page-result-item col-xs-12">
+                        <div class="col-xs-5 noPadding">
+                            <img src="lib/images/3dmax.png" alt="" class="img-responsive">
+                        </div>
+                        <div class="col-xs-7 page-result-content">
+                            <p class="page-result-title">Lotto 3D Max</p>
+                            <p class="page-result-excerpt">Tính năng này đang được phát triển</p>
+                            <button class="commingsoon">Comming soon...</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 noPadding" *ngIf="activePage == 3" >
+                <ion-list [virtualScroll]="store" bufferRatio="10">
+                    <ion-item *virtualItem="let item" class="lucky-store">
+                        <ion-thumbnail item-left>
+                        <img src="lib/images/store.png" class="img-responsive center-block" />
+                        </ion-thumbnail>
+                        <h2>{{ item.address }}</h2>
+                        <p class="store-phone"><ion-icon name="call"></ion-icon> {{ item.phone }}</p>
+                    </ion-item>
+                </ion-list>
+            </div>
+        
+            <div class="page-check col-xs-12" *ngIf="activePage == 4">
+                <img src="lib/images/mega645.jpg" alt="" class="img-responsive center-block" width="150">
+                <div class="page-check-form col-xs-12">
+                    <p>Tra cứu kết quả sổ xố Mega 6 / 45</p>
+                    <form action="" method="POST" role="form">
+                        <div class="form-group">
+                            <label for="">Ngày quay thưởng</label>
+                            <div class="input-group margin-bottom-sm" (click)="picker()">
+                                <span class="input-group-addon"><i class="fa fa-calendar-check-o fa-fw"></i></span>
+                                <input class="form-control" type="text" placeholder="{{ curentDate }}" disabled>
+                            </div>
+                        </div>
+                    </form>
+                    <button class="page-check-button" (click)="pickNumber()"><i class="fa fa-check" aria-hidden="true"></i> Chọn số</button>
+                </div>
+                <p><i class="fa fa-calendar" aria-hidden="true"></i> Kết quả ngày: <span class="date">{{ curentDate }}</span></p>
+                <div class="page-check-ball col-xs-12 noPadding">
+                    <ul class="ball-list text-center">
+                        <li *ngFor="let item of currentResult">
+                            <div class="ball-wrapper">
+                                <div class="ball-wrapper-inside">
+                                    <div class="ball">{{ item }}</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+    <div class="page-footer col-xs-12 noPadding">
+        <div class="tab-item col-xs-3 noPadding text-center" (click)="tabIndex(1)">
+            <i class="fa fa-location-arrow" aria-hidden="true"></i>
+        </div>
+        <div class="tab-item col-xs-3 noPadding text-center" (click)="tabIndex(2)">
+            <i class="fa fa-clipboard" aria-hidden="true"></i>
+        </div>
+        <div class="tab-item col-xs-3 noPadding text-center" (click)="tabIndex(3)">
+            <i class="fa fa-home" aria-hidden="true"></i>
+        </div>
+        <div class="tab-item col-xs-3 noPadding text-center" (click)="tabIndex(4)">
+            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+        </div>
+    </div>
+</div>

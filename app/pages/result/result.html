@@ -1,0 +1,137 @@
+<div class="col-xs-12 app-wrapper noPadding">
+    <div class="page-header col-xs-12 noPadding">
+        <h1 class="text-center">Tra cứu kết quả</h1>
+        <a class="back-navigation" (click)="closeView(2)"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+    </div>
+    <div class="page-body col-xs-12 noPadding">
+        <!--Kết quả mặc định-->
+        <div *ngIf="showNewestResult === true">
+            <div class="page-result-detail col-xs-12" *ngFor="let data of searchResultJackpot">
+                <img src="lib/images/jackpot.png" alt="" class="img-responsive center-block" width="150">
+                <p><i class="fa fa-calendar" aria-hidden="true"></i> Ngày quay thưởng: <span class="date">{{ data.date }}</span></p>
+                <div class="page-result-detail-prize col-xs-12 noPadding">
+                    <money>{{ data.jackpot_price | currency:'VND':true }}</money>
+                </div>
+                <div class="page-result-detail-ball col-xs-12 noPadding">
+                    <ul class="ball-list text-center">
+                        <li *ngFor="let ball of prizeResult">
+                            <div class="ball-wrapper">
+                                <div class="ball-wrapper-inside">
+                                    <div class="ball">{{ ball }}</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="page-result-detail-table col-xs-12 noPadding">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Giải thưởng</th>
+                                    <th>Số lượng</th>
+                                    <th>Trị giá (đ)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jackpot</td>
+                                    <td>{{ data.detail.jackpot.number }}</td>
+                                    <td>{{ data.detail.jackpot.price | currency:'VND':true }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Giải nhất</td>
+                                    <td>{{ data.detail.prize1.number }}</td>
+                                    <td>{{ data.detail.prize1.price | currency:'VND':true }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Giải nhì</td>
+                                    <td>{{ data.detail.prize2.number }}</td>
+                                    <td>{{ data.detail.prize2.price | currency:'VND':true }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Giải ba</td>
+                                    <td>{{ data.detail.prize3.number }}</td>
+                                    <td>{{ data.detail.prize3.number | currency:'VND':true }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <button class="page-result-detail-button" (click)="datePicker()"><i class="fa fa-calendar" aria-hidden="true"></i> Xem ngày khác</button>
+            </div>
+        </div>
+
+        <!--Kết quả trả về-->
+        <div *ngIf="showNewestResult === false" >
+            <div class="page-result-detail col-xs-12" *ngFor="let data of returnResult">
+                <img src="lib/images/jackpot.png" alt="" class="img-responsive center-block" width="150">
+                <p><i class="fa fa-calendar" aria-hidden="true"></i> Ngày quay thưởng: <span class="date">{{ data.date }}</span></p>
+                <div class="page-result-detail-prize col-xs-12 noPadding">
+                    <money>{{ data.jackpot_price | currency:'VND':true }}</money>
+                </div>
+                <div class="page-result-detail-ball col-xs-12 noPadding">
+                    <ul class="ball-list text-center">
+                        <li *ngFor="let ball of prizeResult">
+                            <div class="ball-wrapper">
+                                <div class="ball-wrapper-inside">
+                                    <div class="ball">{{ ball }}</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="page-result-detail-table col-xs-12 noPadding">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Giải thưởng</th>
+                                    <th>Số lượng</th>
+                                    <th>Trị giá (đ)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jackpot</td>
+                                    <td>{{ data.detail.jackpot.number }}</td>
+                                    <td>{{ data.detail.jackpot.price | currency:'VND':true }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Giải nhất</td>
+                                    <td>{{ data.detail.prize1.number }}</td>
+                                    <td>{{ data.detail.prize1.price | currency:'VND':true }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Giải nhì</td>
+                                    <td>{{ data.detail.prize2.number }}</td>
+                                    <td>{{ data.detail.prize2.price | currency:'VND':true }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Giải ba</td>
+                                    <td>{{ data.detail.prize3.number }}</td>
+                                    <td>{{ data.detail.prize3.number | currency:'VND':true }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <button class="page-result-detail-button" (click)="datePicker()"><i class="fa fa-calendar" aria-hidden="true"></i> Xem ngày khác</button>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer col-xs-12 noPadding">
+        <div class="tab-item col-xs-3 noPadding text-center" (click)="closeView(1)">
+            <i class="fa fa-location-arrow" aria-hidden="true"></i>
+        </div>
+        <div class="tab-item col-xs-3 noPadding text-center" (click)="closeView(2)">
+            <i class="fa fa-clipboard" aria-hidden="true"></i>
+        </div>
+        <div class="tab-item col-xs-3 noPadding text-center" (click)="closeView(3)">
+            <i class="fa fa-home" aria-hidden="true"></i>
+        </div>
+        <div class="tab-item col-xs-3 noPadding text-center" (click)="closeView(4)">
+            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+        </div>
+    </div>
+</div>

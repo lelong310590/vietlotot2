@@ -1,0 +1,77 @@
+<div class="backdrop" (click)="closeModal()">
+    <div class="modal-check-result" *ngIf="resultStatus == false">
+        <div class="modal-header col-xs-12 noPadding">
+            <h2>CHÚC BẠN MAY MẮN LẦN SAU</h2>
+        </div>
+        <div class="modal-body col-xs-12 noPadding">
+            <img src="lib/images/sad.png" alt="" width="100" class="img-responsive center-block">
+            <p class="text-center border-bottom">Rất tiếc, bạn không trúng giải nào</p>
+            <p class="text-center">Dãy số kết quả:</p>
+            <div class="modal-result-ball col-xs-12 noPadding">
+                <ul class="ball-list">
+                    <li *ngFor="let item of prizeResult">
+                        <div class="ball-wrapper">
+                            <div class="ball-wrapper-inside">
+                                <div class="ball">{{ item }}</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <p class="text-center">Dãy số bạn chọn:</p>
+            <div class="modal-picked-ball col-xs-12 noPadding">
+                <ul>
+                    <li *ngFor="let item of selectedBall">{{ item }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-check-result" *ngIf="resultStatus == true">
+        <div class="modal-header col-xs-12 noPadding">
+            <h2>TRÚNG THƯỞNG</h2>
+        </div>
+        <div class="modal-body col-xs-12 noPadding">
+            <img src="lib/images/win.png" alt="" width="100" class="img-responsive center-block">
+            <p class="text-center border-bottom">Chúc mứng bạn đã trúng giải</p>
+            <div class="modal-win-prize col-xs-12 noPadding">
+                <money>{{ prizeWin | currency:'VND':true }}</money>
+                <div class="page-result-detail-table">
+                    <div class="table-responsive" *ngFor="let data of prizeTable">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Giải thưởng</th>
+                                    <th>Số lượng</th>
+                                    <th>Trị giá (đ)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Jackpot</td>
+                                    <td>{{ data.detail.jackpot.number }}</td>
+                                    <td>{{ data.detail.jackpot.price | currency:'VND':true }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Giải nhất</td>
+                                    <td>{{ data.detail.prize1.number }}</td>
+                                    <td>{{ data.detail.prize1.price | currency:'VND':true }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Giải nhì</td>
+                                    <td>{{ data.detail.prize2.number }}</td>
+                                    <td>{{ data.detail.prize2.price | currency:'VND':true }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Giải ba</td>
+                                    <td>{{ data.detail.prize3.number }}</td>
+                                    <td>{{ data.detail.prize3.price | currency:'VND':true }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

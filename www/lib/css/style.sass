@@ -1,0 +1,235 @@
+@import 'variable.sass';
+
+body 
+	font-size: 13px;
+	color: #212121;
+	font-weight: 500;
+p 
+	margin: 5px 0;
+	font-size: 13px;
+	.date 
+		color: #fff;
+		background: #b71c1c
+.app-wrapper
+	height: 100vh;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+.page-header 
+	background: $primaryColor;
+	margin: 0;
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	height: 55px;
+	border: none;
+	img 
+		margin-top: 15px;
+	h1 
+		color: #fff;
+		font-weight: 700;
+		font-size: 16px;
+		text-transform: uppercase;
+		margin-top: 15px;
+.page-body
+	background: #f6f6f6;
+	padding: 8px;
+	margin-top: 55px;
+	padding-bottom: 55px;
+	height: calc(100% - 55px);
+	overflow-x: scroll;
+.page-result 
+	padding: 5px;
+	.page-result-item
+		padding: 5px;
+		background: #fff;
+		.page-result-title
+			font-size: 15px;
+			font-weight: 700;
+			color: $primaryColor;
+			margin-top: 0;
+		.page-result-content
+			padding-left: 15px;
+		money 
+			font-size: 15px;
+
+.page-check
+	background: #fff;
+	padding: 25px 8px;
+	.page-check-form 
+		background-color: #4a148c;
+		background-image: url('../images/lotto.png');
+		background-position: top right;
+		background-repeat: no-repeat;
+		padding: 15px;
+		color: #fff;
+		font-weight: 700;
+		margin-top: 40px;
+		margin-bottom: 40px;
+		background-size: 20%;
+		p 
+			color: #fff;
+		.input-group
+			margin-top: 10px;
+		.input-group-addon
+			font-size: 15px;
+			border: 1px solid #eee;
+		.form-control
+			font-size: 15px;
+	.page-check-button
+	    text-align: center;
+	    width: 100%;
+	    background: #3f51b5;
+	    color: #fff;
+	    text-transform: uppercase;
+	    padding: 15px;
+	    font-weight: 700;
+	    text-shadow: none;
+	    border-radius: 5px;
+	    border: none;
+	    box-shadow: none;
+	.page-check-ball
+		margin-top: 20px;
+
+.page-picknumber
+	background: #fff;
+	padding: 10px;
+	.page-pickernumber-picker-ball
+		background: #b71c1c;
+		border-radius: 5px;
+		padding: 10px;
+		margin-bottom: 30px;
+		min-height: 50px;
+		ul
+			margin: 0;
+			padding: 0;
+			li 
+				list-style: none;
+				display: inline-block;
+				background: #fff;
+				border-radius: 100%;
+				padding: 5px;
+				width: 30px;
+				height: 30px;
+				font-weight: 900;
+				text-align: center;
+				margin-right: 2px;
+	.page-picknumber-ball-list
+		td 
+			text-align: center;
+			font-weight: 900;
+			border: 1px solid #b7b7b7;
+			padding: 9px!important;
+		.checked 
+			color: #fff;
+			background: #01579b;
+			border-color: #01579b;
+	.page-picknumber-check-button
+		text-align: center;
+		width: 100%;
+		background: #3f51b5;
+		color: #fff;
+		text-transform: uppercase;
+		padding: 10px;
+		font-weight: 700;
+		text-shadow: none;
+		border-radius: 5px;
+		margin-top: 10px;
+		border: none;
+		box-shadow: none;
+.modal-check-result
+	position: absolute
+	width: 80%;
+	z-index: 300;
+	background: #fff;
+	top: 20%;
+	left: 10%;
+	bottom: 20%;
+	text-align: center;
+	.modal-header
+		color: #fff;
+		background: #e53935;
+		h2
+			font-weight: 700;
+			font-size: 15px;
+			margin: 10px auto;
+	.modal-body
+		background: #fff;
+		padding: 15px 5px;
+	.modal-result-ball
+		margin-bottom: 12px;
+		.ball-wrapper
+			padding: 3px;
+		.ball 
+			padding: 0
+			width: 18px;
+			height: 18px;
+		.ball-wrapper-inside
+			padding: 1px;
+	.modal-picked-ball
+		li 
+			display: inline-block;
+			font-weight: 900;
+			border: 1px solid #212121;
+			padding: 6px;
+			border-radius: 100%;
+			width: 34px;
+	.modal-win-prize
+		money 
+			font-weight: 700;
+			font-size: 26px;
+	.table-responsive
+		font-size: 11px;
+	.page-result-detail-table
+		margin-top: 10px;
+.lucky-store
+	h2 
+		white-space: normal;
+		font-size: 12.5px!important;
+.page-result-detail
+	background: #fff;
+	padding: 25px 10px;
+	img 
+		margin-bottom: 20px;
+	.page-result-detail-prize
+		money 
+			font-size: 28px;
+			font-weight: 700;
+			margin: 15px auto;
+	.page-result-detail-button
+		text-align: center!important;
+		width: 100%!important;
+		background: #3f51b5!important;
+		color: #fff!important;
+		text-transform: uppercase!important;
+		padding: 15px!important;
+		font-weight: 700!important;
+		text-shadow: none!important;
+		border-radius: 5px!important;
+		margin-top: 10px!important;
+		border: none!important;
+		box-shadow: none!important;
+		font-size: 14px;
+		i 
+			margin-right: 5px;
+	.page-result-detail-ball
+		margin-bottom: 20px;
+.page-footer 
+	background: $primaryColor;
+	height: 55px;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 100;
+	.tab-item
+		color: #fff;
+		font-size: 17px;
+		height: 100%;
+		padding-top: 18px;
+		border-right: 1px solid #9f1d1d;
+		&:last-child 
+			border-right: none;
+	.tab-active	
+		background: #b71c1c;
