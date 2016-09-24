@@ -10,7 +10,7 @@
                 <img src="lib/images/jackpot.png" alt="" class="img-responsive center-block" width="150">
                 <p><i class="fa fa-calendar" aria-hidden="true"></i> Ngày quay thưởng: <span class="date">{{ data.date }}</span></p>
                 <div class="page-result-detail-prize col-xs-12 noPadding">
-                    <money>{{ data.jackpot_price | currency:'VND':true }}</money>
+                    <money>{{ data.jackpot_price }}</money>
                 </div>
                 <div class="page-result-detail-ball col-xs-12 noPadding">
                     <ul class="ball-list text-center">
@@ -37,22 +37,22 @@
                                 <tr>
                                     <td>Jackpot</td>
                                     <td>{{ data.detail.jackpot.number }}</td>
-                                    <td>{{ data.detail.jackpot.price | currency:'VND':true }}</td>
+                                    <td>{{ data.detail.jackpot.price }}</td>
                                 </tr>
                                 <tr>
                                     <td>Giải nhất</td>
                                     <td>{{ data.detail.prize1.number }}</td>
-                                    <td>{{ data.detail.prize1.price | currency:'VND':true }}</td>
+                                    <td>{{ data.detail.prize1.price }}</td>
                                 </tr>
                                 <tr>
                                     <td>Giải nhì</td>
                                     <td>{{ data.detail.prize2.number }}</td>
-                                    <td>{{ data.detail.prize2.price | currency:'VND':true }}</td>
+                                    <td>{{ data.detail.prize2.price }}</td>
                                 </tr>
                                 <tr>
                                     <td>Giải ba</td>
                                     <td>{{ data.detail.prize3.number }}</td>
-                                    <td>{{ data.detail.prize3.number | currency:'VND':true }}</td>
+                                    <td>{{ data.detail.prize3.number }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -68,7 +68,7 @@
                 <img src="lib/images/jackpot.png" alt="" class="img-responsive center-block" width="150">
                 <p><i class="fa fa-calendar" aria-hidden="true"></i> Ngày quay thưởng: <span class="date">{{ data.date }}</span></p>
                 <div class="page-result-detail-prize col-xs-12 noPadding">
-                    <money>{{ data.jackpot_price | currency:'VND':true }}</money>
+                    <money>{{ data.jackpot_price }}</money>
                 </div>
                 <div class="page-result-detail-ball col-xs-12 noPadding">
                     <ul class="ball-list text-center">
@@ -95,22 +95,22 @@
                                 <tr>
                                     <td>Jackpot</td>
                                     <td>{{ data.detail.jackpot.number }}</td>
-                                    <td>{{ data.detail.jackpot.price | currency:'VND':true }}</td>
+                                    <td>{{ data.detail.jackpot.price }}</td>
                                 </tr>
                                 <tr>
                                     <td>Giải nhất</td>
                                     <td>{{ data.detail.prize1.number }}</td>
-                                    <td>{{ data.detail.prize1.price | currency:'VND':true }}</td>
+                                    <td>{{ data.detail.prize1.price }}</td>
                                 </tr>
                                 <tr>
                                     <td>Giải nhì</td>
                                     <td>{{ data.detail.prize2.number }}</td>
-                                    <td>{{ data.detail.prize2.price | currency:'VND':true }}</td>
+                                    <td>{{ data.detail.prize2.price }}</td>
                                 </tr>
                                 <tr>
                                     <td>Giải ba</td>
                                     <td>{{ data.detail.prize3.number }}</td>
-                                    <td>{{ data.detail.prize3.number | currency:'VND':true }}</td>
+                                    <td>{{ data.detail.prize3.number }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -121,16 +121,16 @@
         </div>
     </div>
     <div class="page-footer col-xs-12 noPadding">
-        <div class="tab-item col-xs-3 noPadding text-center" (click)="closeView(1)">
+        <div class="tab-item col-xs-3 noPadding text-center" (click)="mapView()">
             <i class="fa fa-location-arrow" aria-hidden="true"></i>
         </div>
-        <div class="tab-item col-xs-3 noPadding text-center" (click)="closeView(2)">
+        <div class="tab-item col-xs-3 noPadding text-center tab-active" (click)="resultView()">
             <i class="fa fa-clipboard" aria-hidden="true"></i>
         </div>
-        <div class="tab-item col-xs-3 noPadding text-center" (click)="closeView(3)">
+        <div class="tab-item col-xs-3 noPadding text-center" (click)="luckyView()">
             <i class="fa fa-home" aria-hidden="true"></i>
         </div>
-        <div class="tab-item col-xs-3 noPadding text-center" (click)="closeView(4)">
+        <div class="tab-item col-xs-3 noPadding text-center" (click)="checkView()">
             <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
         </div>
     </div>

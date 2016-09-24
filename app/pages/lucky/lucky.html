@@ -1,0 +1,32 @@
+<div class="col-xs-12 app-wrapper noPadding">
+    <div class="page-header col-xs-12 noPadding">
+        <img src="lib/images/logo.jpg" alt="" class="img-responsive center-block" width="100">
+    </div>
+    <div class="page-body col-xs-12 noPadding">
+        <div class="col-xs-12 noPadding">
+            <ion-list>
+                <ion-item *ngFor="let item of store" >
+                    <ion-thumbnail item-left>
+                    <img src="lib/images/store.png" class="img-responsive center-block" />
+                    </ion-thumbnail>
+                    <h2>{{ item.address }}</h2>
+                    <p class="store-phone"><ion-icon name="call"></ion-icon> {{ item.phone }}</p>
+                </ion-item>
+            </ion-list>
+        </div>
+    </div>
+    <div class="page-footer col-xs-12 noPadding">
+        <div class="tab-item col-xs-3 noPadding text-center" (click)="mapView()">
+            <i class="fa fa-location-arrow" aria-hidden="true"></i>
+        </div>
+        <div class="tab-item col-xs-3 noPadding text-center" (click)="resultView()">
+            <i class="fa fa-clipboard" aria-hidden="true"></i>
+        </div>
+        <div class="tab-item col-xs-3 noPadding text-center tab-active">
+            <i class="fa fa-home" aria-hidden="true"></i>
+        </div>
+        <div class="tab-item col-xs-3 noPadding text-center" (click)="checkView()">
+            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+        </div>
+    </div>
+</div>

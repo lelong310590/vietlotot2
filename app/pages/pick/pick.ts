@@ -12,7 +12,11 @@ import { Helper } from '../../services/helper';
 
 // Page import
 import { TabPage } from '../tab/tab';
+import { CheckPage } from '../check/check';
 import { CheckResult } from '../check-result/check-result';
+import { ResultPage } from '../../pages/result/result';
+import { MapPage } from '../../pages/map/map';
+import { LuckyPage } from '../../pages/lucky/lucky';
 
 @Component({
     templateUrl: 'build/pages/pick/pick.html',
@@ -27,8 +31,24 @@ export class PickPage {
     private pickerBall: Array<any> = [];
     private paramCheck: Array<any> = []; // Mảng chứa Param
 
-    constructor(private viewController: ViewController, private helper: Helper, private http: Http, private navParams: NavParams, private navCtrl: NavController, private loadingCtrl: LoadingController, private modalCtrl: ModalController ) {
+    constructor(private viewController: ViewController, private helper: Helper, private http: Http, private navParams: NavParams, private navController: NavController, private loadingCtrl: LoadingController, private modalCtrl: ModalController ) {
 
+    }
+
+    public mapView() {
+        this.navController.setRoot(MapPage);
+    }
+
+    public resultView() {
+        this.navController.setRoot(TabPage);
+    }
+    
+    public checkView() {
+        this.navController.setRoot(CheckPage);
+    }
+
+    public luckyView() {
+        this.navController.setRoot(LuckyPage);
     }
 
     public pickBall(ballNo,  viewId) {
@@ -82,6 +102,6 @@ export class PickPage {
     }
 
     public close(No) {
-        this.navCtrl.setRoot(TabPage, {activePage: No});
+        this.navController.setRoot(TabPage);
     }
 }

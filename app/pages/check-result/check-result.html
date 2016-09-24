@@ -35,7 +35,7 @@
             <img src="lib/images/win.png" alt="" width="100" class="img-responsive center-block">
             <p class="text-center border-bottom">Chúc mứng bạn đã trúng giải</p>
             <div class="modal-win-prize col-xs-12 noPadding">
-                <money>{{ prizeWin | currency:'VND':true }}</money>
+                <money>{{ prizeWin }}</money>
                 <div class="page-result-detail-table">
                     <div class="table-responsive" *ngFor="let data of prizeTable">
                         <table class="table table-hover">
@@ -50,22 +50,22 @@
                                 <tr>
                                     <td>Jackpot</td>
                                     <td>{{ data.detail.jackpot.number }}</td>
-                                    <td>{{ data.detail.jackpot.price | currency:'VND':true }}</td>
+                                    <td>{{ data.detail.jackpot.price }}</td>
                                 </tr>
                                 <tr>
                                     <td>Giải nhất</td>
                                     <td>{{ data.detail.prize1.number }}</td>
-                                    <td>{{ data.detail.prize1.price | currency:'VND':true }}</td>
+                                    <td>{{ data.detail.prize1.price }}</td>
                                 </tr>
                                 <tr>
                                     <td>Giải nhì</td>
                                     <td>{{ data.detail.prize2.number }}</td>
-                                    <td>{{ data.detail.prize2.price | currency:'VND':true }}</td>
+                                    <td>{{ data.detail.prize2.price }}</td>
                                 </tr>
                                 <tr>
                                     <td>Giải ba</td>
                                     <td>{{ data.detail.prize3.number }}</td>
-                                    <td>{{ data.detail.prize3.price | currency:'VND':true }}</td>
+                                    <td>{{ data.detail.prize3.price }}</td>
                                 </tr>
                             </tbody>
                         </table>

@@ -1,0 +1,49 @@
+<div class="col-xs-12 app-wrapper noPadding">
+    <div class="page-header col-xs-12 noPadding">
+        <img src="lib/images/logo.jpg" alt="" class="img-responsive center-block" width="100">
+    </div>
+    <div class="page-body col-xs-12 noPadding">
+        <div class="page-check col-xs-12">
+            <img src="lib/images/mega645.jpg" alt="" class="img-responsive center-block" width="150">
+            <div class="page-check-form col-xs-12">
+                <p>Tra cứu kết quả sổ xố Mega 6 / 45</p>
+                <form action="" method="POST" role="form">
+                    <div class="form-group">
+                        <label for="">Ngày quay thưởng</label>
+                        <div class="input-group margin-bottom-sm" (click)="picker()">
+                            <span class="input-group-addon"><i class="fa fa-calendar-check-o fa-fw"></i></span>
+                            <input class="form-control" type="text" placeholder="{{ curentDate }}" disabled>
+                        </div>
+                    </div>
+                </form>
+                <button class="page-check-button" (click)="pickNumber()"><i class="fa fa-check" aria-hidden="true"></i> Chọn số</button>
+            </div>
+            <p><i class="fa fa-calendar" aria-hidden="true"></i> Kết quả ngày: <span class="date">{{ curentDate }}</span></p>
+            <div class="page-check-ball col-xs-12 noPadding">
+                <ul class="ball-list text-center">
+                    <li *ngFor="let item of currentResult">
+                        <div class="ball-wrapper">
+                            <div class="ball-wrapper-inside">
+                                <div class="ball">{{ item }}</div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer col-xs-12 noPadding">
+        <div class="tab-item col-xs-3 noPadding text-center" (click)="mapView()">
+            <i class="fa fa-location-arrow" aria-hidden="true"></i>
+        </div>
+        <div class="tab-item col-xs-3 noPadding text-center" (click)="resultView()">
+            <i class="fa fa-clipboard" aria-hidden="true"></i>
+        </div>
+        <div class="tab-item col-xs-3 noPadding text-center" (click)="luckyView()">
+            <i class="fa fa-home" aria-hidden="true"></i>
+        </div>
+        <div class="tab-item col-xs-3 noPadding text-center tab-active">
+            <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+        </div>
+    </div>
+</div>

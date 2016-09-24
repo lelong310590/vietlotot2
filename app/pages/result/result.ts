@@ -12,6 +12,9 @@ import { Helper } from '../../services/helper';
 
 // Page import
 import { TabPage } from '../tab/tab';
+import { CheckPage } from '../check/check';
+import { MapPage } from '../../pages/map/map';
+import { LuckyPage } from '../../pages/lucky/lucky';
 
 @Component({
     templateUrl: 'build/pages/result/result.html',
@@ -32,6 +35,22 @@ export class ResultPage {
 
     onPageLoaded() {
         this.getDefaulResult();
+    }
+
+    public mapView() {
+        this.navController.setRoot(MapPage);
+    }
+
+    public resultView() {
+        this.navController.setRoot(TabPage);
+    }
+    
+    public checkView() {
+        this.navController.setRoot(CheckPage);
+    }
+
+    public luckyView() {
+        this.navController.setRoot(LuckyPage);
     }
 
     public datePicker() {
@@ -81,7 +100,6 @@ export class ResultPage {
                     );
 
                     this.navController.viewDidLeave.subscribe(() => {
-                        console.log('view leave');
                         httpRequestListenner.unsubscribe();
                     })
                 },
@@ -107,7 +125,6 @@ export class ResultPage {
                 });
 
                 this.navController.viewDidLeave.subscribe(() => {
-                    // console.log('view leave');
                     httpRequestListenner.unsubscribe();
                 })
 
@@ -126,7 +143,7 @@ export class ResultPage {
     }
 
     public closeView(No) {
-        this.navController.setRoot(TabPage, {activePage: No});
+        this.navController.setRoot(TabPage);
     }
 
 }
