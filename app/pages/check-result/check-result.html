@@ -37,7 +37,7 @@
             <div class="modal-win-prize col-xs-12 noPadding">
                 <money>{{ prizeWin }}</money>
                 <div class="page-result-detail-table">
-                    <div class="table-responsive" *ngFor="let data of prizeTable">
+                    <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
@@ -49,23 +49,23 @@
                             <tbody>
                                 <tr>
                                     <td>Jackpot</td>
-                                    <td>{{ data.detail.jackpot.number }}</td>
-                                    <td>{{ data.detail.jackpot.price }}</td>
+                                    <td>{{ prizeTable.jackpot.number }}</td>
+                                    <td>{{ jackpot }}</td>
                                 </tr>
                                 <tr>
                                     <td>Giải nhất</td>
-                                    <td>{{ data.detail.prize1.number }}</td>
-                                    <td>{{ data.detail.prize1.price }}</td>
+                                    <td>{{ prizeTable.prize1.number }}</td>
+                                    <td>{{ prize1 }}</td>
                                 </tr>
                                 <tr>
                                     <td>Giải nhì</td>
-                                    <td>{{ data.detail.prize2.number }}</td>
-                                    <td>{{ data.detail.prize2.price }}</td>
+                                    <td>{{ prizeTable.prize2.number }}</td>
+                                    <td>{{ prize2 }}</td>
                                 </tr>
                                 <tr>
                                     <td>Giải ba</td>
-                                    <td>{{ data.detail.prize3.number }}</td>
-                                    <td>{{ data.detail.prize3.price }}</td>
+                                    <td>{{ prizeTable.prize3.number }}</td>
+                                    <td>{{ prize3 }}</td>
                                 </tr>
                             </tbody>
                         </table>

@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Network } from 'ionic-native';
 
 @Injectable()
-export class ServiceNameService {
+export class NetworkServices {
+    constructor() {
 
-    constructor() { }
+    }
+    
 }

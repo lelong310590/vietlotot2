@@ -22,8 +22,13 @@ export class CheckResult {
     private prizeResult: any = [];
     private resultStatus: boolean;
     private selectedBall: any;
-    private prizeWin: number;
-    private prizeTable: Array<any> = [];
+    private prizeWin: any;
+    private prizeTable: any;
+
+    private prize1: any;
+    private prize2: any;
+    private prize3: any;
+    private jackpot: any;
 
     constructor(private navParam: NavParams, 
                 private viewCtrl: ViewController, 
@@ -37,6 +42,7 @@ export class CheckResult {
 
     onPageLoaded() {
         this.selectedBall = this.navParam.get('ball');
+        console.log(this.selectedBall.find(8));
         if (this.navParam.get('data').total == 0) {
             this.resultStatus = false; // Không trúng
             this.getBallResultFail();
@@ -70,21 +76,13 @@ export class CheckResult {
     }
 
     public getBallResultWin() {
-        this.prizeWin = this.navParam.get('data').total;
-        let httpRequestListenner = this.http.get('http://loto.halogi.com/result?date=' + this.navParam.get('date')).map(res => res.json()).subscribe(
-            (data) => {
-                this.prizeTable.push(data);
-                // console.log(this.prizeTable);
-
-            },
-            (error) => {
-                Toast.show("Không tải được dữ liệu, Hãy kiểm tra lại kết nối mạng", '2500', 'bottom').subscribe(
-                    toast => {
-                        // console.log(toast);
-                    }
-                );
-            }
-        );
+        console.log(this.navParam.get('data').detail);
+        this.prizeWin = this.helper.formatMoney(this.navParam.get('data').total, 0, 'đ', ',', '.');
+        this.prizeTable = this.navParam.get('data').detail;
+        this.prize1 = this.helper.formatMoney(this.navParam.get('data').detail.prize1.price, '0', 'đ', ',', '.');
+        this.prize2 = this.helper.formatMoney(this.navParam.get('data').detail.prize2.price, '0', 'đ', ',', '.');
+        this.prize3 = this.helper.formatMoney(this.navParam.get('data').detail.prize3.price, '0', 'đ', ',', '.');
+        this.jackpot = this.helper.formatMoney(this.navParam.get('data').detail.jackpot.price, '0', 'đ', ',', '.');
     }
 
 }

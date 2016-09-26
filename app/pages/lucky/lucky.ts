@@ -4,6 +4,8 @@ import { NavController, Platform, NavParams, Page, ViewController, ModalControll
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import { Toast } from 'ionic-native';
+
 // Page import
 import { MapPage } from '../../pages/map/map';
 import { TabPage } from '../../pages/tab/tab';
@@ -26,6 +28,12 @@ export class LuckyPage {
             setTimeout(function() {
                 httpRequest.unsubscribe();
             }, 2500);
+        }, (error) => {
+            Toast.show('Lỗi kết nối, vui lòng kiểm tra lại kết nối mạng', '3000', 'center').subscribe(
+                toast => {
+                    console.log(toast);
+                }
+            );
         })
     }
 

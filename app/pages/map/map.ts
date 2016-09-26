@@ -30,60 +30,66 @@ export class MapPage {
 
     public initializeMap() {
 
-        this.http.get('http://loto.halogi.com/store').map(res => res.json()).subscribe(data => {
+        let map = new GoogleMap('map', {
+            'zoom': 15,
+            'controls': {
+                'compass': true,
+                'myLocationButton': true,
+                'indoorPicker': true,
+                'zoom': true
+            },
+        });
 
-            console.log('http done');
+        map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
+            map.setCenter(new GoogleMapsLatLng(21.032316, 105.812963));
+            map.setMyLocationEnabled(true);
+            map.setZoom(15);
+        });
 
-            let map = new GoogleMap('map', {
-                zoom: 15
+        Geolocation.getCurrentPosition().then((resp) => {
+            let lat = resp.coords.latitude;
+            let long = resp.coords.longitude;
+            let coord = new GoogleMapsLatLng(lat, long); // Current Position
+            map.animateCamera({
+                'target': coord,
+                'zoom': 18,
+                'duration': 2000
             });
-            
-            map.on(GoogleMapsEvent.MAP_READY).subscribe(() => {
-                map.setMyLocationEnabled(true);
-                map.setZoom(15);
-
-
-                // let options: GeolocationOptions = {
-                //     maximumAge: 0, timeout: 5000, enableHighAccuracy: false
-                // };
-
-                Geolocation.getCurrentPosition().then((resp) => {
-                    console.log('locate ready');
-                    let lat = resp.coords.latitude;
-                    let long = resp.coords.longitude;
-                    let coord = new GoogleMapsLatLng(lat, long); // Current Position
-                    map.animateCamera({
-                        'target': coord,
-                        'zoom': 18,
-                    });
-                    // Toast.show("Chọn một đại lý bán vé ở gần bạn và bắt đầu tham gia", '3000', 'bottom').subscribe(
-                    //     toast => {
-                    //     }
-                    // );
-                })
-
-                addMarkers(data, function (markers) {
-                    markers[markers.length - 1].showInfoWindow();
-                });
-
-                function addMarkers(data, callback) {
-                    var markers = [];
-                    function onMarkerAdded(marker) {
-                        markers.push(marker);
-                        if (markers.length === data.length) {
-                            callback(markers);
-                        }
-                    }
-
-                    data.forEach((element) => {
-                        map.addMarker({
-                            'position': new GoogleMapsLatLng(element.location.lat, element.location.lng),
-                            'title': element.title
-                        }).then(onMarkerAdded);
-                    });
+        }, (error) => {
+            Toast.show('Vui lòng kiểm tra lại tính năng định vị trên thiết bị của bạn', '3000', 'center').subscribe(
+                toast => {
                 }
+            );
+        })
+
+        this.http.get('http://loto.halogi.com/store').map(res => res.json()).subscribe((data) => {
+
+            addMarkers(data, function (markers) {
+                markers[markers.length - 1].showInfoWindow();
             });
 
+            function addMarkers(data, callback) {
+                var markers = [];
+                function onMarkerAdded(marker) {
+                    markers.push(marker);
+                    if (markers.length === data.length) {
+                        callback(markers);
+                    }
+                }
+
+                data.forEach((element) => {
+                    map.addMarker({
+                        'position': new GoogleMapsLatLng(element.location.lat, element.location.lng),
+                        'title': element.title
+                    }).then(onMarkerAdded);
+                });
+            }
+
+        }, (error) => {
+            Toast.show('Lỗi kết nối, vui lòng kiểm tra lại kết nối mạng', '3000', 'center').subscribe(
+                toast => {
+                }
+            );
         });
     }
 

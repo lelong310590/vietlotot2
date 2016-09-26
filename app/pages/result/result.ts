@@ -29,6 +29,12 @@ export class ResultPage {
 
     private showNewestResult: boolean = true;
 
+    // Money
+    private jackpotPrize: any;
+    private prize1: any;
+    private prize2: any;
+    private prize3: any;
+
     constructor(public navController: NavController, private platform: Platform, private http: Http, private helper: Helper, private loadingCtrl: LoadingController, private viewCtrl: ViewController) {
         
     }
@@ -73,6 +79,11 @@ export class ResultPage {
                     // console.log(dateStr);
                     let httpRequestListenner = this.http.get('http://loto.halogi.com/result?date=' + dateStr).map(res => res.json()).subscribe(
                         (data) => {
+                            
+                            this.jackpotPrize = this.helper.formatMoney(data.jackpot_price, 0, 'đ', ',', '.');
+                            this.prize1 = this.helper.formatMoney(data.detail.prize1.price, 0, 'đ', ',', '.');
+                            this.prize2 = this.helper.formatMoney(data.detail.prize2.price, 0, 'đ', ',', '.');
+                            this.prize3 = this.helper.formatMoney(data.detail.prize3.price, 0, 'đ', ',', '.');
 
                             this.returnResult = []; // Xóa mảng kết quả trả về trước khi truyền vào dữ liệu mới
                             this.returnprizeResult = []; // Xóa mảng ball kết quả trả về trước khi truyền vào dữ liệu mới
@@ -89,13 +100,12 @@ export class ResultPage {
                             loader.dismiss();
                         },
                         (error) => {
-                            console.log(error);
+                            loader.dismiss();
                             Toast.show('Không có kết quả quay số cho ngày này', '3000', 'center').subscribe(
                                 toast => {
                                     console.log(toast);
                                 }
                             );
-                            loader.dismiss();
                         }
                     );
 
@@ -104,7 +114,11 @@ export class ResultPage {
                     })
                 },
                 (err) => {
-                    console.log("Error occurred while getting date:", err);
+                    Toast.show('Lỗi hệ thống, không chọn được ngày tháng', '3000', 'center').subscribe(
+                        toast => {
+                            console.log(toast);
+                        }
+                    );
                 }
             );
         })
@@ -119,6 +133,11 @@ export class ResultPage {
         let curentDate = date.getFullYear().toString() + this.helper.formatNumber((date.getMonth() + 1).toString()) + this.helper.formatNumber(date.getDate().toString()); //Format lại định dạng ngày tháng
         let httpRequestListenner = this.http.get('http://loto.halogi.com/result?date=' + curentDate).map(res => res.json()).subscribe(
             (data) => {
+                this.jackpotPrize = this.helper.formatMoney(data.jackpot_price, 0, 'đ', ',', '.');
+                this.prize1 = this.helper.formatMoney(data.detail.prize1.price, 0, 'đ', ',', '.');
+                this.prize2 = this.helper.formatMoney(data.detail.prize2.price, 0, 'đ', ',', '.');
+                this.prize3 = this.helper.formatMoney(data.detail.prize3.price, 0, 'đ', ',', '.');
+                
                 this.searchResultJackpot.push(data);
                 data.jackpot.split(",").forEach(i => {
                     this.prizeResult.push(this.helper.formatNumber(i));  // Format lại định dạng số trả về

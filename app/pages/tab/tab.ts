@@ -41,7 +41,7 @@ export class TabPage {
     }
 
     public commingSoon() {
-        Toast.show("Tính năng này đang được phát triển", '2500', 'bottom').subscribe(
+        Toast.show("Tính năng này đang được phát triển", '2500', 'center').subscribe(
             toast => {
             }
         );

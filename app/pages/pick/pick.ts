@@ -96,12 +96,18 @@ export class PickPage {
                 loader.dismiss();
                 let modal = this.modalCtrl.create(CheckResult, {data: data, date: this.navParams.get('date'), ball: this.pickerBall});
                 modal.present();
+            }, (error) => {
+                Toast.show('Lỗi kết nối, vui lòng kiểm tra lại kết nối mạng', '3000', 'center').subscribe(
+                    toast => {
+                        // console.log(toast);
+                    }
+                );
             })
         }
         // }
     }
 
     public close(No) {
-        this.navController.setRoot(TabPage);
+        this.navController.setRoot(CheckPage);
     }
 }

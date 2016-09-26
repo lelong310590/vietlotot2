@@ -114,6 +114,12 @@ export class CheckPage {
             data.jackpot.split(",").forEach(i => {
                 this.currentResult.push(this.helper.formatNumber(i));  // Format lại định dạng số trả về
             });
+        }, (error) => {
+            Toast.show("Không tải được dữ liệu, Hãy kiểm tra lại kết nối mạng", '2500', 'bottom').subscribe(
+                toast => {
+                    // console.log(toast);
+                }
+            );
         })
     }
 }

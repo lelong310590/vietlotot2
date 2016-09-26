@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ionicBootstrap, Platform } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
+import { StatusBar, Splashscreen, ScreenOrientation  } from 'ionic-native';
 
 import { TabPage } from './pages/tab/tab';
 
@@ -17,7 +17,7 @@ export class MyApp {
             // Here you can do any higher level native things you might need.
             StatusBar.overlaysWebView(true); // let status var overlay webview
 			StatusBar.backgroundColorByHexString('#B71C1C');
-
+            ScreenOrientation.lockOrientation('portrait');
             Splashscreen.hide();
         });
     }
