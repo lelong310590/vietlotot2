@@ -80,7 +80,7 @@ export class CheckPage {
                         console.log(error);
                         Toast.show('Không có kết quả quay số cho ngày này', '3000', 'center').subscribe(
                             toast => {
-                                console.log(toast);
+                                // console.log(toast);
                             }
                         );
                         loader.dismiss();
@@ -90,6 +90,12 @@ export class CheckPage {
                 this.navController.viewDidLeave.subscribe(() => {
                     httpRequestListenner.unsubscribe();
                 })
+            }, (error) => {
+                Toast.show('Không chọn được ngày tháng', '3000', 'center').subscribe(
+                    toast => {
+                        // console.log(toast);
+                    }
+                );
             })
         })
     }

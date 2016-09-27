@@ -183,6 +183,10 @@ p
 			padding: 6px;
 			border-radius: 100%;
 			width: 34px;
+		.same 
+			background: #b71c1c!important;
+			color: #fff;
+			border-color: #b71c1c!important;
 	.modal-win-prize
 		money 
 			font-weight: 700;
@@ -230,12 +234,19 @@ p
 	bottom: 0;
 	left: 0;
 	z-index: 100;
+	display: table;
 	.tab-item
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		color: #fff;
-		font-size: 17px;
-		height: 100%;
-		padding-top: 18px;
+		font-size: 14px;
 		border-right: 1px solid #9f1d1d;
+		height: 100%;
+		border-radius: 0;
+		box-shadow: none;
+		background: #d32f2f
+		margin: 0;
 		&:last-child 
 			border-right: none;
 	.tab-active	

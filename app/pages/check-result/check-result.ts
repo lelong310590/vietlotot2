@@ -19,9 +19,9 @@ import { PickPage } from '../pick/pick';
 })
 export class CheckResult { 
 
-    private prizeResult: any = [];
+    private prizeResult: Array<any> = [];
     private resultStatus: boolean;
-    private selectedBall: any;
+    private selectedBall: Array<Object> = [];
     private prizeWin: any;
     private prizeTable: any;
 
@@ -41,8 +41,13 @@ export class CheckResult {
     }
 
     onPageLoaded() {
-        this.selectedBall = this.navParam.get('ball');
-        console.log(this.selectedBall.find(8));
+        // this.selectedBall = this.navParam.get('ball');
+        // this.selectedBall.forEach(element => {
+        //     this.helper.include(this.prizeResult, element);
+        //     console.log(this.prizeResult);
+        //     console.log(this.helper.include(this.prizeResult, element));
+        // });
+        // console.log(this.helper.include(this.selectedBall, 8));
         if (this.navParam.get('data').total == 0) {
             this.resultStatus = false; // Không trúng
             this.getBallResultFail();
@@ -62,6 +67,16 @@ export class CheckResult {
                 data.jackpot.split(",").forEach(i => {
                     this.prizeResult.push(this.helper.formatNumber(i));  // Format lại định dạng số trả về
                 });
+
+                let ball = this.navParam.get('ball');
+                ball.forEach(element => {
+                    if (this.helper.include(this.prizeResult, element) == true) {
+                         this.selectedBall.push({number: element, status: true});
+                    } else {
+                        this.selectedBall.push({number: element, status: false});
+                    }
+                });
+                console.log(this.selectedBall);
                 // console.log(this.prizeResult);
                 
             },

@@ -103,7 +103,7 @@ export class ResultPage {
                             loader.dismiss();
                             Toast.show('Không có kết quả quay số cho ngày này', '3000', 'center').subscribe(
                                 toast => {
-                                    console.log(toast);
+                                    // console.log(toast);
                                 }
                             );
                         }

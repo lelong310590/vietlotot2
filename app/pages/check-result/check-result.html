@@ -21,7 +21,7 @@
             <p class="text-center">Dãy số bạn chọn:</p>
             <div class="modal-picked-ball col-xs-12 noPadding">
                 <ul>
-                    <li *ngFor="let item of selectedBall">{{ item }}</li>
+                    <li *ngFor="let item of selectedBall" [ngClass]="{'same': item.status }">{{ item.number }}</li>
                 </ul>
             </div>
         </div>

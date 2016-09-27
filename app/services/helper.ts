@@ -22,4 +22,11 @@ export class Helper {
         var j = (j = i.length) > 3 ? j % 3 : 0;
     	return negative + (j ? i.substr(0, j) + thousand : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousand) + (places ? decimal + Math.abs(number - parseInt(i)).toFixed(places).slice(2) : "") + ' ' + symbol;
     }
+
+    // Hàm kiểm tra phần tử trong mảng
+    include(arr, obj) {
+        for(var i=0; i<arr.length; i++) {
+            if (arr[i] == obj) return true;
+        }
+    }
 }
